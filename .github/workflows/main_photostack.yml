@@ -67,6 +67,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'photostack'
-          slot-name: 'Production'
           package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EF8571D063134ADBB44B48B5CD8531E2 }}
