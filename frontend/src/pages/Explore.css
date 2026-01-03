@@ -1,0 +1,33 @@
+.explore-page {
+  padding: 80px 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.explore-header {
+  margin-bottom: 32px;
+}
+
+.explore-header h1 {
+  font-size: 2rem;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.explore-header h1 i { color: #6366f1; }
+
+.explore-header p {
+  color: #6b7280;
+}
+
+.load-more {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.load-more .btn {
+  padding: 12px 32px;
+}

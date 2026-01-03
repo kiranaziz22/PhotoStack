@@ -1,0 +1,81 @@
+# =========================
+# Node / NPM
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.local
+.env.development
+.env.production
+
+# =========================
+# Build outputs
+# =========================
+dist/
+build/
+.out/
+.next/
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS / Editor junk
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Azure specific
+# =========================
+.azure/
+.azure-pipelines/
+.azureFunctions/
+.local.settings.json
+
+# =========================
+# Azure Blob temp / uploads
+# =========================
+uploads/
+tmp/
+storage/
+
+# =========================
+# Mongo / database
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# =========================
+# Test coverage
+# =========================
+coverage/
+
+# =========================
+# Frontend build artifacts
+# =========================
+frontend/dist/
+frontend/build/
+
+# =========================
+# Misc
+# =========================
+.env.*
+*.pem
+*.key

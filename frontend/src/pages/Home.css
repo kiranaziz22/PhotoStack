@@ -1,0 +1,201 @@
+.home { padding-top: 60px; }
+
+/* Hero */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 5%;
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #fdf4ff 100%);
+  overflow: hidden;
+}
+
+.hero-content { max-width: 550px; }
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #6b7280;
+  margin-bottom: 32px;
+}
+
+.hero-buttons { display: flex; gap: 16px; }
+
+.btn-lg {
+  padding: 14px 28px;
+  font-size: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #374151;
+}
+
+.btn-glass:hover {
+  background: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.floating-cards {
+  position: relative;
+  width: 350px;
+  height: 400px;
+}
+
+.float-card {
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s;
+}
+
+.float-card img { width: 100%; height: 100%; object-fit: cover; }
+
+.float-card.card-1 { top: 0; left: 0; transform: rotate(-8deg); z-index: 3; }
+.float-card.card-2 { top: 30px; left: 80px; transform: rotate(4deg); z-index: 2; }
+.float-card.card-3 { top: 60px; left: 40px; transform: rotate(-2deg); z-index: 1; }
+
+.float-card:hover { transform: scale(1.05) rotate(0deg); z-index: 10; }
+
+/* Sections */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1f2937;
+}
+
+.section-header h2 i { color: #6366f1; }
+
+.see-all {
+  color: #6366f1;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.see-all:hover { text-decoration: underline; }
+
+/* Trending Scroll */
+.trending-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scroll-snap-type: x mandatory;
+}
+
+.trending-scroll::-webkit-scrollbar { height: 6px; }
+.trending-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+
+.trending-card {
+  flex-shrink: 0;
+  width: 200px;
+  height: 280px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.trending-card img { width: 100%; height: 100%; object-fit: cover; }
+
+.trending-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 12px 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Creators Grid */
+.creators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.creator-card {
+  text-align: center;
+  padding: 24px 16px;
+  background: white;
+  border-radius: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.creator-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.creator-card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.creator-card h4 { margin: 0 0 4px; font-size: 0.95rem; }
+.creator-card span { font-size: 0.8rem; color: #6b7280; }
+
+@media (max-width: 900px) {
+  .hero { flex-direction: column; text-align: center; padding: 40px 20px; }
+  .hero h1 { font-size: 2.5rem; }
+  .hero-buttons { justify-content: center; }
+  .hero-visual { margin-top: 40px; }
+  .floating-cards { width: 280px; height: 320px; }
+  .float-card { width: 160px; height: 200px; }
+}

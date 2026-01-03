@@ -1,0 +1,45 @@
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.photo-card.skeleton {
+  pointer-events: none;
+}
+
+.skeleton-text {
+  height: 14px;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.skeleton-text.short { width: 60%; }
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6b7280;
+}
+
+.empty-state i {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
