@@ -100,13 +100,36 @@ const PhotoDetail = () => {
 
         {photo.caption && <p className="caption">{photo.caption}</p>}
 
-        {/* AI Tags */}
-        {photo.aiTags?.length > 0 && (
-          <div className="tags-section">
-            <h4><i className="fas fa-robot"></i> AI Tags</h4>
-            <div className="tags">
-              {photo.aiTags.map((tag, i) => <span key={i} className="tag">{tag}</span>)}
-            </div>
+        {/* AI Analysis Section */}
+        {(photo.aiTags?.length > 0 || photo.aiDescription) && (
+          <div className="ai-section">
+            <h4><i className="fas fa-robot"></i> AI Analysis</h4>
+            
+            {photo.aiDescription && (
+              <p className="ai-description">
+                <i className="fas fa-quote-left"></i> {photo.aiDescription}
+              </p>
+            )}
+            
+            {photo.aiTags?.length > 0 && (
+              <div className="tags">
+                {photo.aiTags.map((tag, i) => <span key={i} className="tag">{tag}</span>)}
+              </div>
+            )}
+            
+            {photo.dominantColors?.length > 0 && (
+              <div className="colors">
+                <span className="color-label">Colors:</span>
+                {photo.dominantColors.map((color, i) => (
+                  <span 
+                    key={i} 
+                    className="color-chip" 
+                    style={{ backgroundColor: color.toLowerCase() }}
+                    title={color}
+                  ></span>
+                ))}
+              </div>
+            )}
           </div>
         )}
 

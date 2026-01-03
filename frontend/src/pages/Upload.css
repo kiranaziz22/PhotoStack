@@ -140,6 +140,74 @@
 .access-denied h2 { color: #374151; margin-bottom: 8px; }
 .access-denied p { color: #6b7280; }
 
+/* AI Toggle */
+.ai-toggle {
+  background: linear-gradient(135deg, #ede9fe 0%, #dbeafe 100%);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-label input {
+  display: none;
+}
+
+.toggle-switch {
+  width: 48px;
+  height: 26px;
+  background: #d1d5db;
+  border-radius: 13px;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: all 0.3s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.toggle-label input:checked + .toggle-switch {
+  background: #6366f1;
+}
+
+.toggle-label input:checked + .toggle-switch::after {
+  left: 24px;
+}
+
+.toggle-text {
+  font-weight: 600;
+  color: #4338ca;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-text i {
+  font-size: 1.1rem;
+}
+
+.toggle-description {
+  margin: 8px 0 0 60px;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
 @media (max-width: 600px) {
   .upload-container { padding: 24px; }
   .form-row { grid-template-columns: 1fr; }

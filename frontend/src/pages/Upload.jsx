@@ -15,6 +15,7 @@ const Upload = () => {
   const [caption, setCaption] = useState('');
   const [location, setLocation] = useState('');
   const [people, setPeople] = useState('');
+  const [enableAI, setEnableAI] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
 
@@ -67,6 +68,7 @@ const Upload = () => {
       formData.append('caption', caption);
       formData.append('location', location);
       formData.append('people', people);
+      formData.append('enableAI', enableAI);
 
       await photoApi.create(formData);
       navigate('/');
@@ -162,13 +164,33 @@ const Upload = () => {
             </div>
           </div>
 
+          {/* AI Tagging Toggle */}
+          <div className="ai-toggle">
+            <label className="toggle-label">
+              <input
+                type="checkbox"
+                checked={enableAI}
+                onChange={(e) => setEnableAI(e.target.checked)}
+              />
+              <span className="toggle-switch"></span>
+              <span className="toggle-text">
+                <i className="fas fa-robot"></i> Enable AI Tagging
+              </span>
+            </label>
+            <p className="toggle-description">
+              {enableAI 
+                ? 'AI will automatically analyze your photo to generate tags, descriptions, and detect colors'
+                : 'Photo will be uploaded without AI analysis'}
+            </p>
+          </div>
+
           <button 
             type="submit" 
             className="btn btn-primary btn-lg btn-block"
             disabled={!file || !title || uploading}
           >
             {uploading ? (
-              <><span className="spinner-sm"></span> Uploading...</>
+              <><span className="spinner-sm"></span> {enableAI ? 'Uploading & Analyzing...' : 'Uploading...'}</>
             ) : (
               <><i className="fas fa-upload"></i> Upload Photo</>
             )}

@@ -100,8 +100,9 @@ const createPhoto = async (req, res, next) => {
             });
         }
 
-        const { title, caption, location, people } = req.body;
+        const { title, caption, location, people, enableAI } = req.body;
         const creatorId = req.user.oid;
+        const shouldAnalyze = enableAI !== 'false' && enableAI !== false;
 
         // Upload image to Azure Blob Storage
         const uploadResult = await blobService.uploadImage(
@@ -111,12 +112,17 @@ const createPhoto = async (req, res, next) => {
             creatorId
         );
 
-        // Analyze image with Cognitive Services (async, don't wait)
+        // Analyze image with Cognitive Services (if enabled)
         let aiAnalysis = { tags: [], description: '', dominantColors: [], isAdultContent: false };
-        try {
-            aiAnalysis = await cognitiveService.analyzeImage(uploadResult.blobUrl);
-        } catch (err) {
-            console.error('Image analysis failed:', err.message);
+        if (shouldAnalyze) {
+            try {
+                aiAnalysis = await cognitiveService.analyzeImage(uploadResult.blobUrl);
+                console.log('AI Analysis completed:', aiAnalysis.tags?.length, 'tags found');
+            } catch (err) {
+                console.error('Image analysis failed:', err.message);
+            }
+        } else {
+            console.log('AI Analysis skipped (disabled by user)');
         }
 
         // Parse people array from comma-separated string or JSON
