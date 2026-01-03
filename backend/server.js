@@ -103,7 +103,8 @@ const startServer = async () => {
             app.use(express.static(frontendPath));
             
             // Handle SPA routing - serve index.html for non-API routes
-            app.get('*', (req, res, next) => {
+            // Express 5 requires named parameter for wildcard: {*path} instead of *
+            app.get('{*path}', (req, res, next) => {
                 if (req.path.startsWith('/api') || req.path === '/health') {
                     return next();
                 }
