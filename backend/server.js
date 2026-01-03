@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 
 const config = require("./config");
@@ -94,6 +95,21 @@ const startServer = async () => {
             app.use('/api', commentRoutes);
             app.use('/api', ratingRoutes);
             console.log('🔌 Database API routes loaded');
+        }
+        
+        // Serve static frontend in production
+        if (config.nodeEnv === 'production') {
+            const frontendPath = path.join(__dirname, 'public');
+            app.use(express.static(frontendPath));
+            
+            // Handle SPA routing - serve index.html for non-API routes
+            app.get('*', (req, res, next) => {
+                if (req.path.startsWith('/api') || req.path === '/health') {
+                    return next();
+                }
+                res.sendFile(path.join(frontendPath, 'index.html'));
+            });
+            console.log('📁 Serving static frontend from /public');
         }
         
         // 404 handler - AFTER all routes

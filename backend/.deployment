@@ -1,0 +1,11 @@
+# Azure App Service deployment
+node_modules/
+.env
+.env.local
+*.log
+.git/
+.github/
+tests/
+*.test.js
+*.spec.js
+.vscode/

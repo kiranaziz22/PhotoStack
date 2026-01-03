@@ -1,0 +1,12 @@
+{
+  "name": "photostack-backend",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "postinstall": "echo 'Dependencies installed'"
+  }
+}
