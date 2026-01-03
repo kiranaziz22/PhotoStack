@@ -52,8 +52,9 @@ const authenticate = async (req, res, next) => {
         const token = authHeader.split(' ')[1];
 
         // For development without Azure AD B2C
-        if (process.env.NODE_ENV === 'development' && !config.azureAd.jwksUri) {
-            // Simple JWT verification for development
+        // For development without Azure AD B2C OR when Azure AD is not configured
+        if (!config.azureAd.jwksUri) {
+            // Simple JWT verification for development/mock mode
             try {
                 // Try JWT decode first
                 let decoded = jwt.decode(token);
